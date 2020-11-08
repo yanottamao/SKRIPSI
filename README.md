@@ -8,7 +8,7 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 
 ### Cara Menjalankan Kode
 
-1. Jalankan simulasi atau hubungkan ke drone sebenarnya
+1. Jalankan simulasi atau hubungkan ke drone fisik
 2. Jalankan kode di terminal
 
 ```bash
