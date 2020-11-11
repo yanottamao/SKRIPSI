@@ -1,4 +1,4 @@
-# Repository Skripsi 
+# Repository Skripsi
 
 ## Skripsi Pemetaan
 
@@ -20,3 +20,9 @@ python nama_kode.py
 - [ ] Integrasi semua fungsi
 - [ ] Integrasi gui
 - [ ] ...
+
+### Progress to do
+
+1. Menyederhanakan kode
+2. Menjadikan fungsi pergerakan dll jadi satu tanpa mengulangi penulisan
+3. Cari fungsi dari kode yang tidak yakin
