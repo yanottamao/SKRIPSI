@@ -28,23 +28,65 @@ def modeterbang():
         modeterbang()
 
 
-def takeoff():
-    pub = rospy.Publisher('ardrone/takeoff', Empty, queue_size=10)
-    rospy.init_node('takeoff', anonymous=True)
+def arahterbang():
+    print('Pilihan arah terbang:')
+    print('0. Diam di udara')
+    print('1. Naik')
+    print('2. Turun')
+    print('3. Maju')
+    print('4. Mundur')
+    print('5. Bergerak ke kanan')
+    print('6. Bergerak ke kiri')
+
+
+def terbang(mode):
+    # not sure what queue_size do
+    pub = rospy.Publisher(mode, Empty, queue_size=10)
+    rospy.init_node('terbang', anonymous=True)    # should be just once
+    rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
+    while not rospy.is_shutdown():
+        pub.publish(Empty())
+        rate.sleep()
+
+
+def bergerak(mode, kecepatan):
+    pub = rospy.Publisher(mode, Twist, queue_size=10)
+    # rospy.init_node('bergerak', anonymous = True) # should be not necessary
+    rate = rospy.Rate(10)
+    vel_msg = Twist()
+
+    vel_msg.linear.x = abs(kecepatan)
+    vel_msg.linear.y = 0
+    vel_msg.linear.z = 0
+    vel_msg.angular.x = 0
+    vel_msg.angular.y = 0
+    vel_msg.angular.z = 0
+
+    while not rospy.is_shutdown():
+        pub.publish(vel_msg)
+        rate.sleep()    # not sure
+
+
+'''
+def takeoff(mode):
+    pub = rospy.Publisher(mode, Empty, queue_size=10)
+    # rospy.init_node('takeoff', anonymous=True)    # not sure
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
         pub.publish(Empty())
         rate.sleep()
 
 
-def land():
-    pub = rospy.Publisher('ardrone/land', Empty, queue_size=10)
-    rospy.init_node('land', anonymous=True)
+def land(mode):
+    pub = rospy.Publisher(mode, Empty, queue_size=10)
+    # rospy.init_node('land', anonymous=True)   # not sure
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
         pub.publish(Empty())
         rate.sleep()
+'''
 
+'''
 
 def forward():
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
@@ -360,6 +402,7 @@ def hover():
         # paksa henti
         pub.publish(vel_msg)
 
+'''
 
 if __name__ == '__main__':
     try:
