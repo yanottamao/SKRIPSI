@@ -28,7 +28,7 @@ def modeterbang():
         modeterbang()
 
 
-def arahterbang():
+def arahterbang(kecepatan):
     print('Pilihan arah terbang:')
     print('0. Diam di udara')
     print('1. Naik')
@@ -37,6 +37,138 @@ def arahterbang():
     print('4. Mundur')
     print('5. Bergerak ke kanan')
     print('6. Bergerak ke kiri')
+    print('7. Bergerak berlawanan jarum jam')
+    print('8. Bergerak searah jarum jam')
+
+    arahtujuan = int(input('Masukkan pilihan arah: '))
+    global arahkecepatan
+
+
+'''
+    # diam di udara
+    if arahtujuan == 0:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # naik
+    elif arahtujuan == 1:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = abs(kecepatan)
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # turun
+    elif arahtujuan == 2:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = -abs(kecepatan)
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # maju
+    elif arahtujuan == 3:
+        vel_msg.linear.x = abs(kecepatan)
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # mundur
+    elif arahtujuan == 4:
+        vel_msg.linear.x = -abs(kecepatan)
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # bergerak ke kanan
+    elif arahtujuan == 5:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = -abs(kecepatan)
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+    # bergerak ke kiri
+    elif arahtujuan == 6:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = abs(kecepatan)
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = 0
+
+# bergerak berlawanan arah jarum jam
+    elif arahtujuan == 7:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = abs(kecepatan)
+
+# bergerak searah jarum jam
+    elif arahtujuan == 8:
+        vel_msg.linear.x = 0
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = -abs(kecepatan)
+'''
+global lx
+global ly
+global lz
+global az
+
+   # diam di udara
+   if arahtujuan == 0:
+        return lx = 0
+        return ly = 0
+        return lz = 0
+        return az = 0
+
+    # naik
+    elif arahtujuan == 1:
+        return lz = abs(kecepatan)
+
+    # turun
+    elif arahtujuan == 2:
+        return lz - abs(kecepatan)
+
+    # maju
+    elif arahtujuan == 3:
+        return lx = abs(kecepatan)
+
+    # mundur
+    elif arahtujuan == 4:
+        return lx = -abs(kecepatan)
+
+    # bergerak ke kanan
+    elif arahtujuan == 5:
+        return ly = -abs(kecepatan)
+
+    # bergerak ke kiri
+    elif arahtujuan == 6:
+        return ly = abs(kecepatan)
+
+# bergerak berlawanan arah jarum jam
+    elif arahtujuan == 7:
+        return az = abs(kecepatan)
+
+# bergerak searah jarum jam
+    elif arahtujuan == 8:
+        return az = -abs(kecepatan)
 
 
 def terbang(mode):
@@ -49,18 +181,18 @@ def terbang(mode):
         rate.sleep()
 
 
-def bergerak(mode, kecepatan):
+def bergerak(mode, kecepatan, lx, ly, lz, az):
     pub = rospy.Publisher(mode, Twist, queue_size=10)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
-    vel_msg = Twist()
+    global vel_msg = Twist()
 
-    vel_msg.linear.x = abs(kecepatan)
-    vel_msg.linear.y = 0
-    vel_msg.linear.z = 0
+    vel_msg.linear.x = lx
+    vel_msg.linear.y = ly
+    vel_msg.linear.z = lz
     vel_msg.angular.x = 0
     vel_msg.angular.y = 0
-    vel_msg.angular.z = 0
+    vel_msg.angular.z = az
 
     while not rospy.is_shutdown():
         pub.publish(vel_msg)
