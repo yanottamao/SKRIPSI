@@ -6,7 +6,8 @@ from geometry_msgs.msg import Twist
 
 
 def kecepatandefault():
-    global kecepatan = input('Masukkan kecepatan antara 0.1 - 1: ')
+    global kecepatan
+    kecepatan = float(input('Masukkan kecepatan antara 0.1 - 1: '))
     return kecepatan
 
 
@@ -42,6 +43,83 @@ def arahterbang(kecepatan):
 
     arahtujuan = int(input('Masukkan pilihan arah: '))
     global arahkecepatan
+
+    global lx
+    global ly
+    global lz
+    global az
+
+    # diam di udara
+    if arahtujuan == 0:
+        lx = 0
+        ly = 0
+        lz = 0
+        az = 0
+        return lx, ly, lz, az
+
+    # naik
+    elif arahtujuan == 1:
+        lx = 0
+        ly = 0
+        lz = abs(kecepatan)
+        az = 0
+        return lx, ly, lz, az
+
+    # turun
+    elif arahtujuan == 2:
+        lx = 0
+        ly = 0
+        lz = -abs(kecepatan)
+        az = 0
+        return lx, ly, lz, az
+
+    # maju
+    elif arahtujuan == 3:
+        lx = abs(kecepatan)
+        ly = 0
+        lz = 0
+        az = 0
+        return lx, ly, lz, az
+
+    # mundur
+    elif arahtujuan == 4:
+        lx = -abs(kecepatan)
+        ly = 0
+        lz = 0
+        az = 0
+        return lx, ly, lz, az
+
+    # bergerak ke kanan
+    elif arahtujuan == 5:
+        lx = 0
+        ly = -abs(kecepatan)
+        lz = 0
+        az = 0
+        return lx, ly, lz, az
+
+    # bergerak ke kiri
+    elif arahtujuan == 6:
+        lx = 0
+        ly = abs(kecepatan)
+        lz = 0
+        az = 0
+        return lx, ly, lz, az
+
+# bergerak berlawanan arah jarum jam
+    elif arahtujuan == 7:
+        lx = 0
+        ly = 0
+        lz = 0
+        az = abs(kecepatan)
+        return lx, ly, lz, az
+
+# bergerak searah jarum jam
+    elif arahtujuan == 8:
+        lx = 0
+        ly = 0
+        lz = 0
+        az = -abs(kecepatan)
+        return lx, ly, lz, az
 
 
 '''
@@ -126,49 +204,6 @@ def arahterbang(kecepatan):
         vel_msg.angular.y = 0
         vel_msg.angular.z = -abs(kecepatan)
 '''
-global lx
-global ly
-global lz
-global az
-
-   # diam di udara
-   if arahtujuan == 0:
-        return lx = 0
-        return ly = 0
-        return lz = 0
-        return az = 0
-
-    # naik
-    elif arahtujuan == 1:
-        return lz = abs(kecepatan)
-
-    # turun
-    elif arahtujuan == 2:
-        return lz - abs(kecepatan)
-
-    # maju
-    elif arahtujuan == 3:
-        return lx = abs(kecepatan)
-
-    # mundur
-    elif arahtujuan == 4:
-        return lx = -abs(kecepatan)
-
-    # bergerak ke kanan
-    elif arahtujuan == 5:
-        return ly = -abs(kecepatan)
-
-    # bergerak ke kiri
-    elif arahtujuan == 6:
-        return ly = abs(kecepatan)
-
-# bergerak berlawanan arah jarum jam
-    elif arahtujuan == 7:
-        return az = abs(kecepatan)
-
-# bergerak searah jarum jam
-    elif arahtujuan == 8:
-        return az = -abs(kecepatan)
 
 
 def terbang(mode):
