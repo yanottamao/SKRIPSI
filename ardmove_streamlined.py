@@ -1,14 +1,26 @@
 #!/usr/bin/env python
+
+# import ros - ros library untuk python, http://wiki.ros.org/rospy
 import rospy
+# import std_msgs dari library msg untuk mengirim pesan / perintah
+# ke drone - Empty untuk takeoff atau land, http://wiki.ros.org/msg,
+# http://wiki.ros.org/std_msgs
 from std_msgs.msg import String
 from std_msgs.msg import Empty
+# import geometry_msgs dari library msg untuk perintah pose / pergerakan
+# Twist berisi perintah linear dan angular, http://wiki.ros.org/geometry_msgs
 from geometry_msgs.msg import Twist
+
+# fungsi untuk memasukkan kecepatan default yang akan digunakan
+# untuk mengontrol drone
 
 
 def kecepatandefault():
     global kecepatan
     kecepatan = float(input('Masukkan kecepatan antara 0.1 - 1: '))
     return kecepatan
+
+# fungsi untuk memilih mode terbang dari drone
 
 
 def modeterbang():
@@ -20,13 +32,18 @@ def modeterbang():
     modeinput = int(input('Masukkan mode terbang: '))
     if modeinput == 1:
         mode = 'ardrone/takeoff'
+        return mode
     elif modeinput == 2:
         mode = 'ardrone/land'
+        return mode
     elif modeinput == 3:
         mode = '/cmd_vel'
+        return mode
     else:
         print('Pilih antara pilian diatas!')
         modeterbang()
+
+# fungsi untuk memilih arah terbang drone
 
 
 def arahterbang(kecepatan):
@@ -44,10 +61,10 @@ def arahterbang(kecepatan):
     arahtujuan = int(input('Masukkan pilihan arah: '))
     global arahkecepatan
 
-    global lx
-    global ly
-    global lz
-    global az
+    global lx   # lx = linear x
+    global ly   # ly = linear y
+    global lz   # lz = linear z
+    global az   # az = angular z
 
     # diam di udara
     if arahtujuan == 0:
@@ -105,7 +122,7 @@ def arahterbang(kecepatan):
         az = 0
         return lx, ly, lz, az
 
-# bergerak berlawanan arah jarum jam
+    # bergerak berlawanan arah jarum jam
     elif arahtujuan == 7:
         lx = 0
         ly = 0
@@ -113,13 +130,18 @@ def arahterbang(kecepatan):
         az = abs(kecepatan)
         return lx, ly, lz, az
 
-# bergerak searah jarum jam
+    #  bergerak searah jarum jam
     elif arahtujuan == 8:
         lx = 0
         ly = 0
         lz = 0
         az = -abs(kecepatan)
         return lx, ly, lz, az
+
+# fungsi untuk terbang / takeoff dan mendarat / land
+# mengirim pesan / perintah Empty ke publisher (?) / node (?)
+# /ardrone/takeoff atau /ardrone/land - perintah diambil dari
+# return mode di fungsi modeterbang()
 
 
 def terbang(mode):
@@ -130,6 +152,11 @@ def terbang(mode):
     while not rospy.is_shutdown():
         pub.publish(Empty())
         rate.sleep()
+
+# fungsi untuk arah bergerak drone ketika terbang
+# mengirim pesan / perintah Twist yang berisi linear dan angular
+# ke /cmd_vel yang diambil dari return lx, ly, lz, az di
+# fungsi arah terbang()
 
 
 def bergerak(mode, kecepatan, lx, ly, lz, az):
@@ -150,6 +177,7 @@ def bergerak(mode, kecepatan, lx, ly, lz, az):
         rate.sleep()    # not sure
 
 
+# fungsi utama untuk memanggil main
 if __name__ == '__main__':
     try:
         forward()
