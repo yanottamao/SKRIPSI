@@ -15,7 +15,13 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 python nama_kode.py
 ```
 
-### To Do
+### To do urgent
+
+- [ ] Menambah fungsi main untuk menggabungkan pemanggilan fungsi
+- [ ] Membaca / menscan input keyboard tanpa enter, preliminary menggunakan module curses
+- [ ] ...
+
+### To Do future
 
 - [ ] Integrasi semua fungsi
 - [ ] Integrasi gui
