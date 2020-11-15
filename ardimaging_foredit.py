@@ -11,6 +11,13 @@ os.system(
 # call(['ls', '-l'])
 
 
+def filecalib():
+    global calibr
+    calibr = input('Masukkan path file kalibrasi: ')
+    print('Lokasi file: ' + calibr)
+    return calibr
+
+
 def slam():
     global slam_run
     # testing
@@ -21,7 +28,8 @@ def slam():
 
 
 def main():
-    slam()
+    # slam()
+    filecalib()
 
 
 if __name__ == "__main__":
