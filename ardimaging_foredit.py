@@ -18,18 +18,20 @@ def filecalib():
     return calibr
 
 
-def slam():
+def slam(calibr):
     global slam_run
     # testing
     # slam_run = 'Jalankan slam'
     # print(slam_run)
+    print('Path: ' + calibr)    # test pemanggilan return calibr
     slam_run = call(['rosrun', 'lsd_slam_core', 'live_slam',
-                     'image:/ardrone/front/image_raw', '_calib:/file'])
+                     'image:/ardrone/front/image_raw', '_calib:' + calibr])
 
 
 def main():
     # slam()
     filecalib()
+    slam(calibr)
 
 
 if __name__ == "__main__":
