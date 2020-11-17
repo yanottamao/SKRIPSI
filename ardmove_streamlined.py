@@ -162,10 +162,13 @@ def terbang(mode):
         pub.publish(Empty())
         rate.sleep()
 
-# fungsi untuk arah bergerak drone ketika terbang
-# mengirim pesan / perintah Twist yang berisi linear dan angular
-# ke /cmd_vel yang diambil dari return lx, ly, lz, az di
-# fungsi arah terbang()
+
+'''
+fungsi untuk arah bergerak drone ketika terbang
+mengirim pesan / perintah Twist yang berisi linear dan angular
+ke /cmd_vel yang diambil dari return lx, ly, lz, az di
+fungsi arah terbang()
+'''
 
 
 def bergerak(mode, kecepatan, lx, ly, lz, az):
