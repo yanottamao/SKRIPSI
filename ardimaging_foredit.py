@@ -11,6 +11,11 @@ os.system(
 # call(['ls', '-l'])
 
 
+def viewslam():
+    # pemanggilan viewer
+    viewslam_run = call(['rosrun', 'lsd_slam_viewer', 'viewer'])
+
+
 def filecalib():
     global calibr
     calibr = input('Masukkan path file kalibrasi: ')
