@@ -1,18 +1,24 @@
 #!/usr/bin/env python
 
 # import ros - ros library untuk python, http://wiki.ros.org/rospy
+from geometry_msgs.msg import Twist
 import rospy
-# import std_msgs dari library msg untuk mengirim pesan / perintah
-# ke drone - Empty untuk takeoff atau land, http://wiki.ros.org/msg,
-# http://wiki.ros.org/std_msgs
+'''
+import std_msgs dari library msg untuk mengirim pesan / perintah
+ke drone - Empty untuk takeoff atau land, http://wiki.ros.org/msg,
+http://wiki.ros.org/std_msgs
+'''
 from std_msgs.msg import String
 from std_msgs.msg import Empty
-# import geometry_msgs dari library msg untuk perintah pose / pergerakan
-# Twist berisi perintah linear dan angular, http://wiki.ros.org/geometry_msgs
-from geometry_msgs.msg import Twist
+'''
+import geometry_msgs dari library msg untuk perintah pose / pergerakan
+Twist berisi perintah linear dan angular, http://wiki.ros.org/geometry_msgs
+'''
 
-# fungsi untuk memasukkan kecepatan default yang akan digunakan
-# untuk mengontrol drone
+'''
+fungsi untuk memasukkan kecepatan default yang akan digunakan
+untuk mengontrol drone
+'''
 
 
 def kecepatandefault():
@@ -138,10 +144,13 @@ def arahterbang(kecepatan):
         az = -abs(kecepatan)
         return lx, ly, lz, az
 
-# fungsi untuk terbang / takeoff dan mendarat / land
-# mengirim pesan / perintah Empty ke publisher (?) / node (?)
-# /ardrone/takeoff atau /ardrone/land - perintah diambil dari
-# return mode di fungsi modeterbang()
+
+'''
+fungsi untuk terbang / takeoff dan mendarat / land
+mengirim pesan / perintah Empty ke publisher (?) / node (?)
+/ardrone/takeoff atau /ardrone/land - perintah diambil dari
+return mode di fungsi modeterbang()
+'''
 
 
 def terbang(mode):
@@ -175,6 +184,13 @@ def bergerak(mode, kecepatan, lx, ly, lz, az):
     while not rospy.is_shutdown():
         pub.publish(vel_msg)
         rate.sleep()    # not sure
+
+# fungsi main
+
+
+def main():
+    print('Kendali Ar.Drone dengan Python')
+    modeterbang()
 
 
 # fungsi utama untuk memanggil main
