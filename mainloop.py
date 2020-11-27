@@ -1,7 +1,7 @@
 '''
 Referensi perintah untuk perulangan pemanggilan main
 yang dikirim hanya satu perintah
-untuk print lain tetap sama isinya
+untuk print lain tetap sama
 '''
 
 
