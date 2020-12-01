@@ -126,58 +126,59 @@ def mode_bergerak(perintah_bergerak, kecepatan):
             return lx, ly, lz, az
 
 
-def standar(perintah_standar):
-    while perintah_standar != 'q':
-        global mode
+# def standar(perintah_standar):
+def menu_state_terbang(perintah_menu_state_terbang):
+    while perintah_menu_state_terbang != 'q':
+        global mode_state_terbang
         print('\nMenu Awal')
         print('q. Keluar')
         print('f. Takeoff')
         print('g. Landing')
         print('h. Mode bergerak')
-        perintah_standar = input('Masukkan perintah: ')
+        perintah_menu_state_terbang = input('Masukkan perintah: ')
         print('')
-        print('Perintah: ' + perintah_standar)
-        if perintah_standar in ['q', 'f', 'g', 'h']:
+        print('Perintah: ' + perintah_menu_state_terbang)
+        if perintah_menu_state_terbang in ['q', 'f', 'g', 'h']:
 
             # menuju ke menu pergerakan
-            if perintah_standar == 'h':
+            if perintah_menu_state_terbang == 'h':
+                # cek dulu
                 print('Menuju menu pergerakan')
                 mode_bergerak(perintah_standar)
-                mode = '/cmd_vel'
+                mode_state_terbang = '/cmd_vel'
                 mode_bergerak(perintah_bergerak, kecepatan)
-                arah_bergerak(mode, kecepatan, lx, ly, lz, az)
+                arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az)
 
             # drone takeoff
-            elif perintah_standar == 'f':
+            elif perintah_menu_state_terbang == 'f':
                 print('Drone takeoff\n')
-                mode = 'ardrone/takeoff'
-                state_terbang(mode)
+                mode_state_terbang = 'ardrone/takeoff'
+                state_terbang(mode_state_terbang)
 
             # drone landing
-            elif perintah_standar == 'g':
+            elif perintah_menu_state_terbang == 'g':
                 print('Drone landing\n')
-                mode = 'ardrone/land'
-                state_terbang(mode)
+                mode_state_terbang = 'ardrone/land'
+                state_terbang(mode_state_terbang)
 
             # kembali ke menu sebelumnya
-            elif perintah_standar == 'q':
+            elif perintah_menu_state_terbang == 'q':
                 print('Keluar dari menu awal')
                 break
         else:
             print('Masukkan sesuai perintah!')
 
+
 # fungsi untuk inisialisasi kecepatan default
-
-
 def kecepatan_default():
     global kecepatan
     kecepatan = float(input('Masukkan kecepatan antara 0.1 - 1: '))
     return kecepatan
 
 
-def state_terbang(mode):
+def state_terbang(mode_state_terbang):
     # not sure what queue_size do
-    pub = rospy.Publisher(mode, Empty, queue_size=10)
+    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
     rospy.init_node('terbang', anonymous=True)    # should be just once
     rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
     while not rospy.is_shutdown():
@@ -185,8 +186,8 @@ def state_terbang(mode):
         rate.sleep()
 
 
-def arah_bergerak(mode, kecepatan, lx, ly, lz, az):
-    pub = rospy.Publisher(mode, Twist, queue_size=10)
+def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
+    pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
     global vel_msg = Twist()
