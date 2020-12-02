@@ -1,3 +1,11 @@
+'''
+TO DO
+1. ubah nama fungsi
+2. ubah nama parameter
+3. cari hubungan / sambungan antara pemanggilan fungsi
+'''
+
+
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import String
@@ -12,8 +20,8 @@ def kecepatan_default():
     return kecepatan
 
 
-def mode_bergerak(perintah_bergerak, kecepatan):
-    while perintah_bergerak != 'q':
+def fungsi_arah(perintah_arah, kecepatan):
+    while perintah_arah != 'q':
         global lx
         global ly
         global lz
@@ -30,10 +38,10 @@ def mode_bergerak(perintah_bergerak, kecepatan):
         print('t. Turun')
         print('p. Searah jarum jam')
         print('o. Berlawanan jarum jam')
-        perintah_bergerak = input('Masukkan perintah: ')
+        perintah_arah = input('Masukkan perintah: ')
         print('')
-        print('Perintah: ' + perintah_bergerak)
-        if perintah_bergerak in ['q', 'u', 'i', 'k', 'j', 'l', 'y', 't', 'p', 'o']:
+        print('Perintah: ' + perintah_arah)
+        if perintah_arah in ['q', 'u', 'i', 'k', 'j', 'l', 'y', 't', 'p', 'o']:
             # drone diam di udara hover
             if perintah_bergerak == 'u':
                 print('Drone diam\n')
@@ -149,7 +157,8 @@ def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
     pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
-    global vel_msg = Twist()
+    global vel_msg
+    vel_msg = Twist()
 
     vel_msg.linear.x = lx
     vel_msg.linear.y = ly
@@ -214,6 +223,8 @@ def main():
     modeterbang()
     '''
     while perintah_main != 'q':
+        global perintah_menu_state_terbang
+        perintah_menu_state_terbang = ''
         print('\nMenu utama')
         print('q. Keluar')
         print('1. Mulai')
@@ -223,7 +234,7 @@ def main():
         if perintah_main in ['1', 'q']:
             if perintah_main == '1':
                 print('Menuju menu awal')
-                standar(perintah_standar)
+                menu_state_terbang(perintah_menu_state_terbang)
             elif perintah_main == 'q':
                 print('Keluar dari program')
                 break
