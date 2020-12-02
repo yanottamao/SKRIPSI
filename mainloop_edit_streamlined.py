@@ -5,6 +5,13 @@ from std_msgs.msg import Empty
 from geometry_msgs.msg import Twist
 
 
+# fungsi untuk inisialisasi kecepatan default
+def kecepatan_default():
+    global kecepatan
+    kecepatan = float(input('Masukkan kecepatan antara 0.1 - 1: '))
+    return kecepatan
+
+
 def mode_bergerak(perintah_bergerak, kecepatan):
     while perintah_bergerak != 'q':
         global lx
@@ -126,6 +133,36 @@ def mode_bergerak(perintah_bergerak, kecepatan):
             return lx, ly, lz, az
 
 
+# fungsi untuk pilihan takeoff atau landing
+def state_terbang(mode_state_terbang):
+    # not sure what queue_size do
+    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
+    rospy.init_node('terbang', anonymous=True)    # should be just once
+    rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
+    while not rospy.is_shutdown():
+        pub.publish(Empty())
+        rate.sleep()
+
+
+# fungsi untuk arah pergerakan ketika di udara
+def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
+    pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
+    # rospy.init_node('bergerak', anonymous = True) # should be not necessary
+    rate = rospy.Rate(10)
+    global vel_msg = Twist()
+
+    vel_msg.linear.x = lx
+    vel_msg.linear.y = ly
+    vel_msg.linear.z = lz
+    vel_msg.angular.x = 0
+    vel_msg.angular.y = 0
+    vel_msg.angular.z = az
+
+    while not rospy.is_shutdown():
+        pub.publish(vel_msg)
+        rate.sleep()    # not sure
+
+
 # def standar(perintah_standar):
 def menu_state_terbang(perintah_menu_state_terbang):
     while perintah_menu_state_terbang != 'q':
@@ -167,41 +204,6 @@ def menu_state_terbang(perintah_menu_state_terbang):
                 break
         else:
             print('Masukkan sesuai perintah!')
-
-
-# fungsi untuk inisialisasi kecepatan default
-def kecepatan_default():
-    global kecepatan
-    kecepatan = float(input('Masukkan kecepatan antara 0.1 - 1: '))
-    return kecepatan
-
-
-def state_terbang(mode_state_terbang):
-    # not sure what queue_size do
-    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
-    rospy.init_node('terbang', anonymous=True)    # should be just once
-    rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
-    while not rospy.is_shutdown():
-        pub.publish(Empty())
-        rate.sleep()
-
-
-def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
-    pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
-    # rospy.init_node('bergerak', anonymous = True) # should be not necessary
-    rate = rospy.Rate(10)
-    global vel_msg = Twist()
-
-    vel_msg.linear.x = lx
-    vel_msg.linear.y = ly
-    vel_msg.linear.z = lz
-    vel_msg.angular.x = 0
-    vel_msg.angular.y = 0
-    vel_msg.angular.z = az
-
-    while not rospy.is_shutdown():
-        pub.publish(vel_msg)
-        rate.sleep()    # not sure
 
 
 def main():
