@@ -141,7 +141,12 @@ def fungsi_arah(perintah_arah, kecepatan):
             return lx, ly, lz, az
 
 
+'''
+harusnya sudah benar, tinggal cek pemanggilan
+'''
 # fungsi untuk pilihan takeoff atau landing
+
+
 def state_terbang(mode_state_terbang):
     # not sure what queue_size do
     pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
@@ -152,7 +157,12 @@ def state_terbang(mode_state_terbang):
         rate.sleep()
 
 
+'''
+butuh cek parameter
+'''
 # fungsi untuk arah pergerakan ketika di udara
+
+
 def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
     pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
@@ -172,7 +182,12 @@ def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
         rate.sleep()    # not sure
 
 
+'''
+butuh cek variabel
+'''
 # def standar(perintah_standar):
+
+
 def menu_state_terbang(perintah_menu_state_terbang):
     while perintah_menu_state_terbang != 'q':
         global mode_state_terbang
@@ -213,6 +228,11 @@ def menu_state_terbang(perintah_menu_state_terbang):
                 break
         else:
             print('Masukkan sesuai perintah!')
+
+
+'''
+butuh cek variable
+'''
 
 
 def main():
