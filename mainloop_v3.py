@@ -20,7 +20,7 @@ def kecepatan_default():
     return kecepatan
 
 
-def fungsi_arah(perintah_arah, kecepatan):
+def fungsi_menu_arah(perintah_arah, kecepatan):
     while perintah_arah != 'q':
         global lx
         global ly
@@ -147,7 +147,7 @@ harusnya sudah benar, tinggal cek pemanggilan
 # fungsi untuk pilihan takeoff atau landing
 
 
-def state_terbang(mode_state_terbang):
+def fungsi_state_terbang(mode_state_terbang):
     # not sure what queue_size do
     pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
     rospy.init_node('terbang', anonymous=True)    # should be just once
@@ -163,7 +163,7 @@ butuh cek parameter
 # fungsi untuk arah pergerakan ketika di udara
 
 
-def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
+def fungsi_arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
     pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
@@ -183,7 +183,7 @@ def arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az):
 
 
 '''
-butuh cek variabel
+butuh cek variabel + parameter
 '''
 # def standar(perintah_standar):
 
@@ -205,10 +205,12 @@ def menu_state_terbang(perintah_menu_state_terbang):
             if perintah_menu_state_terbang == 'h':
                 # cek dulu
                 print('Menuju menu pergerakan')
-                mode_bergerak(perintah_standar)
+                fungsi_menu_arah()      # ceck parameter
+                # mode_bergerak(perintah_standar)
                 mode_state_terbang = '/cmd_vel'
                 mode_bergerak(perintah_bergerak, kecepatan)
-                arah_bergerak(mode_state_terbang, kecepatan, lx, ly, lz, az)
+                fungsi_arah_bergerak(mode_state_terbang,
+                                     kecepatan, lx, ly, lz, az)
 
             # drone takeoff
             elif perintah_menu_state_terbang == 'f':
