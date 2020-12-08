@@ -5,7 +5,6 @@ TO DO
 3. cari hubungan / sambungan antara pemanggilan fungsi
 '''
 
-
 #!/usr/bin/env python
 # import ros
 import rospy
@@ -15,6 +14,11 @@ from geometry_msgs.msg import Twist
 
 
 # import fungsi
+from terpisah import kecepatan
+from terpisah import menu_arah
+from terpisah import menu_state
+from terpisah import ros_arah
+from terpisah import ros_state
 
 
 '''
