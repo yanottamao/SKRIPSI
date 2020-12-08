@@ -42,6 +42,7 @@ def fungsi_menu_arah(perintah_arah, kecepatan):
         print('')
         print('Perintah: ' + perintah_arah)
         if perintah_arah in ['q', 'u', 'i', 'k', 'j', 'l', 'y', 't', 'p', 'o']:
+            
             # drone diam di udara hover
             if perintah_bergerak == 'u':
                 print('Drone diam\n')
