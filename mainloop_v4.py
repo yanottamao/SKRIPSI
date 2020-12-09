@@ -1,9 +1,10 @@
 '''
 note error :
-menu utama                      - ok
-menu awal   - takeoff           - ok
-            - land              - ok
-            - mode bergerak     - error
+menu utama                          - ok
+menu awal   - takeoff               - ok
+            - land                  - ok
+            - mode bergerak         - error     - ok sepertinya tambahan 1012
+            - fungsi arah bergerak  - error
 
 '''
 
@@ -54,7 +55,7 @@ def kecepatan_default():
 
 def fungsi_menu_arah(perintah_main, kecepatan):
     while perintah_main != 'q':
-        kecepatan = kecepatan_default()
+        # kecepatan = kecepatan_default()       # kayaknya belum perlu
         global lx
         global ly
         global lz
@@ -189,6 +190,7 @@ def menu_state_terbang(perintah_main):
 
             # menuju ke menu pergerakan
             if perintah_main == 'h':
+                kecepatan = kecepatan_default()     # tambahan 1012
                 # cek dulu
                 print('Menuju menu pergerakan')
                 # ceck parameter
