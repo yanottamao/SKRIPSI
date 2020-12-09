@@ -155,7 +155,7 @@ def fungsi_menu_arah(perintah_main, kecepatan):
                 lz = 0
                 az = 0
                 return lx, ly, lz, az
-                break
+                # break
         else:
             print('Masukkan sesuai perintah!')
             lx = 0
@@ -197,13 +197,13 @@ def menu_state_terbang(perintah_main):
                 fungsi_state_terbang(mode_state_terbang)
 
             # drone landing
-            elif perintah_menu_state_terbang == 'g':
+            elif perintah_main == 'g':
                 print('Drone landing\n')
                 mode_state_terbang = 'ardrone/land'
-                state_terbang(mode_state_terbang)
+                fungsi_state_terbang(mode_state_terbang)
 
             # kembali ke menu sebelumnya
-            elif perintah_menu_state_terbang == 'q':
+            elif perintah_main == 'q':
                 print('Keluar dari menu awal')
                 break
         else:
@@ -221,7 +221,7 @@ def main(perintah_main):
         if perintah_main in ['1', 'q']:
             if perintah_main == '1':
                 print('Menuju menu awal')
-                menu_state_terbang()
+                menu_state_terbang(perintah_main)
             elif perintah_main == 'q':
                 print('Keluar dari program')
                 break
@@ -234,5 +234,7 @@ if __name__ == '__main__':
         global perintah_main
         perintah_main = ''
         main(perintah_main)
-    except rospy.ROSInterruptException:
-        pass
+    except:
+        print('Ada yg error....')
+    # except rospy.ROSInterruptException:
+    #     pass
