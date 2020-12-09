@@ -16,6 +16,11 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
     #     pub.publish(vel_msg)
     #     rate.sleep()    # not sure
     print('Pengganti fungsi ros arah')
+    print('Mode state terbang: ' + mode_state_terbang)
+    print('lx: ' + lx)
+    print('ly: ' + ly)
+    print('lz: ' + lz)
+    print('az: ' + az)
 
 
 def fungsi_state_terbang(mode_state_terbang):
@@ -27,6 +32,7 @@ def fungsi_state_terbang(mode_state_terbang):
     #     pub.publish(Empty())
     #     rate.sleep()
     print('Pengganti fungsi ros state')
+    print('Mode state terbang: ' + mode_state_terbang)
 
 
 # fungsi untuk inisialisasi kecepatan default
@@ -175,19 +181,20 @@ def menu_state_terbang(perintah_main):
             if perintah_main == 'h':
                 # cek dulu
                 print('Menuju menu pergerakan')
-                fungsi_menu_arah()      # ceck parameter
+                # ceck parameter
+                fungsi_menu_arah(perintah_main, kecepatan)
                 # mode_bergerak(perintah_standar)
                 mode_state_terbang = '/cmd_vel'
                 # mode_bergerak(perintah_bergerak, kecepatan)
                 # fungsi_arah_bergerak(mode_state_terbang,
                 #                      kecepatan, lx, ly, lz, az)
-                fungsi_arah_bergerak(mode_state_terbang)
+                fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az)
 
             # drone takeoff
-            elif perintah_menu_state_terbang == 'f':
+            elif perintah_main == 'f':
                 print('Drone takeoff\n')
                 mode_state_terbang = 'ardrone/takeoff'
-                state_terbang(mode_state_terbang)
+                fungsi_state_terbang(mode_state_terbang)
 
             # drone landing
             elif perintah_menu_state_terbang == 'g':
