@@ -1,3 +1,13 @@
+'''
+note error :
+menu utama                      - ok
+menu awal   - takeoff           - ok
+            - land              - ok
+            - mode bergerak     - error
+
+'''
+
+
 def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
     # pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
     # # rospy.init_node('bergerak', anonymous = True) # should be not necessary
