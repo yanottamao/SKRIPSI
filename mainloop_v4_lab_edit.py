@@ -326,6 +326,7 @@ def main():
         print('q. Keluar')
         print('1. Mulai')
         print('2. Mulai kamera')
+        print('3. Reset')
         perintah_main = str(raw_input('Masukkan perintah: '))
         print('')
         print('Perintah: ' + str(perintah_main))
@@ -338,6 +339,8 @@ def main():
                 os.system(
                     'rosrun image_view image_view image:=/ardrone/front/image_raw')
                 return
+            elif perintah_main == '3':
+                os.system('rostopic pub -1 ardrone/reset std_msgs/Empty')
             elif perintah_main == 'q':
                 print('Keluar dari program')
                 break
