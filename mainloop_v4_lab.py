@@ -17,7 +17,7 @@ from geometry_msgs.msg import Twist
 import os
 
 def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
-    pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=10)
+    pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=2)
     # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
     global vel_msg
@@ -55,7 +55,7 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
 
 def fungsi_state_terbang(mode_state_terbang):
     # not sure what queue_size do
-    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
+    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=2)
     rospy.init_node('terbang', anonymous=True)    # should be just once
     rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
     while not rospy.is_shutdown():
