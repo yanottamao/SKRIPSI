@@ -35,23 +35,8 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
     while not rospy.is_shutdown():
         pub.publish(vel_msg)
         rate.sleep()    # not sure
-        # rospy.signal_shutdown('Break')
         break
 
-    # tambahan 1012 lab
-    # print('Fungsi fungsi_arah_bergerak')
-    # print('Pengganti fungsi ros arah')
-    # print('Mode state terbang: ' + mode_state_terbang)
-    # print('\nSebelum print lx fungsi_arah_bergerak')
-    # print('lx: ' + str(lx))     # tambahan 1012
-    # print('ly: ' + str(ly))
-    # print('lz: ' + str(lz))
-    # print('az: ' + str(az))
-    # # print('lx: ' + lx)
-    # # print('ly: ' + ly)
-    # # print('lz: ' + lz)
-    # # print('az: ' + az)
-    # fungsi_menu_arah(perintah_main, kecepatan)      # tambahan 1012
     fungsi_menu_arah(kecepatan)
 
 
@@ -63,15 +48,11 @@ def fungsi_state_terbang(mode_state_terbang):
     while not rospy.is_shutdown():
         pub.publish(Empty())
         rate.sleep()
-        # rospy.signal_shutdown('Break')
         break
 
-    # tambahan 1012 lab
-    # print('Pengganti fungsi ros state')
-    # print('Mode state terbang: ' + mode_state_terbang)
-
-
 # fungsi untuk inisialisasi kecepatan default
+
+
 def kecepatan_default():
     global kecepatan
     kecepatan = 0       # default
