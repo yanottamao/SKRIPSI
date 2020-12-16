@@ -28,8 +28,8 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
     vel_msg.linear.x = lx
     vel_msg.linear.y = ly
     vel_msg.linear.z = lz
-    vel_msg.angular.x = 0
-    vel_msg.angular.y = 0
+    vel_msg.angular.x = 1
+    vel_msg.angular.y = 1
     vel_msg.angular.z = az
 
     while not rospy.is_shutdown():
@@ -57,7 +57,7 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
 
 def fungsi_state_terbang(mode_state_terbang):
     # not sure what queue_size do
-    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=10)
+    pub = rospy.Publisher(mode_state_terbang, Empty, queue_size=1)
     rospy.init_node('terbang', anonymous=True)    # should be just once
     rate = rospy.Rate(10)   # should be frequency of transfer rate at 10 hz ?
     while not rospy.is_shutdown():
@@ -113,10 +113,10 @@ def fungsi_menu_arah(kecepatan):
                 print('Fungsi fungsi_menu_arah')
                 print('Mode state terbang: ' + mode_state_terbang)
                 print('')
-                lx = float(0)
-                ly = float(0)
-                lz = float(0)
-                az = float(0)
+                lx = 0
+                ly = 0
+                lz = 0
+                az = 0
                 # print('Sebelum print lx')
                 # print('lx: ' + str(lx))     # tambahan 1012
                 # print('ly: ' + str(ly))
@@ -330,7 +330,7 @@ def main():
         perintah_main = str(raw_input('Masukkan perintah: '))
         print('')
         print('Perintah: ' + str(perintah_main))
-        if perintah_main in ['1', '2', 'q']:
+        if perintah_main in ['1', '2', '3', 'q']:
             if perintah_main == '1':
                 print('Menuju menu awal')
                 # menu_state_terbang(perintah_main)
