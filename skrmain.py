@@ -1,14 +1,3 @@
-'''
-note error :
-menu utama                                                          - ok
-menu awal   - takeoff                                               - ok
-            - land                                                  - ok
-            - mode bergerak                                         - error     - ok sepertinya tambahan 1012
-            - fungsi arah bergerak                                  - error     - ok sepertinya tambahan 1012
-            - fungsi arah bergerak, kembali ke menu sebelumnya      - error
-
-'''
-# tambahan 1012 lab
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import String
@@ -18,9 +7,7 @@ import os
 
 
 def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
-    # queue size besar = pesan banyak def 10    - tambahan 1112
     pub = rospy.Publisher(mode_state_terbang, Twist, queue_size=1)
-    # rospy.init_node('bergerak', anonymous = True) # should be not necessary
     rate = rospy.Rate(10)
     global vel_msg
     vel_msg = Twist()
@@ -34,24 +21,8 @@ def fungsi_arah_bergerak(mode_state_terbang, lx, ly, lz, az):
 
     while not rospy.is_shutdown():
         pub.publish(vel_msg)
-        rate.sleep()    # not sure
-        # rospy.signal_shutdown('Break')
+        rate.sleep()
         break
-
-    # tambahan 1012 lab
-    # print('Fungsi fungsi_arah_bergerak')
-    # print('Pengganti fungsi ros arah')
-    # print('Mode state terbang: ' + mode_state_terbang)
-    # print('\nSebelum print lx fungsi_arah_bergerak')
-    # print('lx: ' + str(lx))     # tambahan 1012
-    # print('ly: ' + str(ly))
-    # print('lz: ' + str(lz))
-    # print('az: ' + str(az))
-    # # print('lx: ' + lx)
-    # # print('ly: ' + ly)
-    # # print('lz: ' + lz)
-    # # print('az: ' + az)
-    # fungsi_menu_arah(perintah_main, kecepatan)      # tambahan 1012
     fungsi_menu_arah(kecepatan)
 
 
@@ -65,9 +36,8 @@ def fungsi_state_terbang(mode_state_terbang):
 
         break
 
+
 # fungsi untuk inisialisasi kecepatan default
-
-
 def kecepatan_default():
     global kecepatan
     kecepatan = 0       # default
@@ -298,6 +268,7 @@ def main():
             print('Fungsi main')
 
 
+# mulai program
 if __name__ == '__main__':
     try:
         main()
