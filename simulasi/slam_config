@@ -1,0 +1,47 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  KFDistWeight: 3.0
+  KFUsageWeight: 4.0
+  allowNegativeIdepths: true
+  cameraPixelNoise: 6.0
+  depthSmoothingFactor: 1.0
+  doKFReActivation: true
+  doMapping: true
+  doSLAM: true
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      KFDistWeight: 3.0
+      KFUsageWeight: 4.0
+      allowNegativeIdepths: true
+      cameraPixelNoise: 6.0
+      depthSmoothingFactor: 1.0
+      doKFReActivation: true
+      doMapping: true
+      doSLAM: true
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      loopclosureStrictness: 1.5
+      maxLoopClosureCandidates: 10
+      minUseGrad: 7.0
+      multiThreading: true
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      relocalizationTH: 0.7
+      state: true
+      type: ''
+      useAffineLightningEstimation: false
+      useFabMap: false
+      useSubpixelStereo: true
+    state: []
+  loopclosureStrictness: 1.5
+  maxLoopClosureCandidates: 10
+  minUseGrad: 7.0
+  multiThreading: true
+  relocalizationTH: 0.7
+  useAffineLightningEstimation: false
+  useFabMap: false
+  useSubpixelStereo: true
+state: []
