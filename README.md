@@ -8,14 +8,18 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 
 ### Cara Menjalankan Kode
 
-1. Jalankan simulasi atau hubungkan ke drone fisik
+1. Install ROS Indigo beserta pendukungnya
+
+Tutorial install : [install ros indigo](https://github.com/yanottamao/ros_install)
+
+2. Jalankan simulasi atau hubungkan ke drone fisik
 
 ```bash
 cd simulasi/
 roslaunch drone_application lab_sim_drone.launch
 ```
 
-2. Jalankan kode di terminal
+3. Jalankan kode di terminal
 
 ```bash
 python nama_kode.py
