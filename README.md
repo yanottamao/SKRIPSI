@@ -25,16 +25,13 @@ roslaunch drone_application lab_sim_drone.launch
 python nama_kode.py
 ```
 
-### To do urgent
-
-- [ ] Menambah fungsi main untuk menggabungkan pemanggilan fungsi
-- [ ] Membaca / menscan input keyboard tanpa enter, preliminary menggunakan module curses
-- [ ] ...
-
 ### To Do future
 
 - [ ] Integrasi semua fungsi
 - [ ] Integrasi gui
+- [ ] Menambah fungsi main untuk menggabungkan pemanggilan fungsi
+- [ ] Membaca / menscan input keyboard tanpa enter, preliminary menggunakan module curses
+- [ ] ...
 - [ ] ...
 
 ### Progress to do
