@@ -25,6 +25,12 @@ roslaunch drone_application lab_sim_drone.launch
 python nama_kode.py
 ```
 
+- Ketika kode stuck
+
+```bash
+ctrl + c
+```
+
 ### To Do future
 
 - [ ] Integrasi semua fungsi
