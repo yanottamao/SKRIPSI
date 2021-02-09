@@ -31,6 +31,8 @@ $ python nama_kode.py
 perintah menjalankan program
 ```
 
+### Troubleshoot
+
 - Ketika kode stuck
 
 ```bash
