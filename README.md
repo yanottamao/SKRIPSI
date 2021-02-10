@@ -6,6 +6,14 @@
 
 Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 
+### Kebutuhan
+
+1. ROS Indigo
+
+2. Gazebo versi 2.x
+
+3. Pendukung
+
 ### Cara Menjalankan Kode
 
 - Install ROS Indigo beserta pendukungnya
