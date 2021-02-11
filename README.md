@@ -14,11 +14,9 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 
 3. Pendukung
 
+Tutorial install : [install ros indigo](https://github.com/yanottamao/ros_install)
+
 ### Cara Menjalankan Kode
-
-- Install ROS Indigo beserta pendukungnya
-
-  Tutorial install : [install ros indigo](https://github.com/yanottamao/ros_install)
 
 - Jalankan simulasi atau hubungkan ke drone fisik
 
