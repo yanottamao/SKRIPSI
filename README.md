@@ -14,7 +14,7 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 
 3. Pendukung
 
-Tutorial install : [install ros indigo](https://github.com/yanottamao/ros_install)
+   Tutorial install : [install ros indigo](https://github.com/yanottamao/ros_install)
 
 ### Cara Menjalankan Kode
 
