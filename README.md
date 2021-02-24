@@ -37,6 +37,12 @@ $ python nama_kode.py
 perintah menjalankan program
 ```
 
+- Cara menjalankan lsd-slam
+
+  1. Install library
+
+  2. Jalankan perintah di terminal
+
 ### Troubleshoot
 
 - Ketika kode stuck
