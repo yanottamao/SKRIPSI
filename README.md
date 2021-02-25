@@ -39,7 +39,7 @@ perintah menjalankan program
 
 - Cara menjalankan lsd-slam
 
-  1. Install library
+  1. Install library [lsd-slam](https://github.com/yanottamao/lsd_slam)
 
   2. Jalankan perintah di terminal
 
