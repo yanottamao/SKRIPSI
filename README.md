@@ -35,6 +35,8 @@ perintah menjalankan simulasi
 ```bash
 $ python nama_kode.py
 perintah menjalankan program
+main.py = kode pergerakan
+misc.py = kode menjalankan slam
 ```
 
 - Cara menjalankan lsd-slam
