@@ -54,7 +54,9 @@ $ ctrl + c
 keluar dari loop kode
 ```
 
-### To Do future
+### Low Priority
+
+#### To Do future
 
 - [ ] Integrasi semua fungsi
 - [ ] Integrasi gui
@@ -63,7 +65,7 @@ keluar dari loop kode
 - [ ] ...
 - [ ] ...
 
-### Progress to do
+#### Progress to do
 
 1. Menyederhanakan kode
 2. Menjadikan fungsi pergerakan dll jadi satu tanpa mengulangi penulisan
