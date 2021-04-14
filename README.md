@@ -21,21 +21,21 @@ Repository untuk kode skripsi pemetaan dalam ruang menggunakan ardrone
 - Jalankan simulasi atau hubungkan ke drone fisik
 
 ```bash
-$ cd simulasi/
-menuju ke directory simulasi
+cd simulasi/
 ```
 
 ```bash
-$ roslaunch drone_application lab_sim_drone.launch
-perintah menjalankan simulasi
+roslaunch drone_application lab_sim_drone.launch
 ```
 
 - Jalankan kode di terminal
 
 ```bash
 $ python nama_kode.py
-perintah menjalankan program
+```
 
+```
+Penjelasan
 main.py = kode pergerakan
 misc.py = kode menjalankan slam
 ```
