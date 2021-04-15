@@ -51,8 +51,7 @@ misc.py = kode menjalankan slam
 - Ketika kode stuck
 
 ```bash
-$ ctrl + c
-keluar dari loop kode
+ctrl + c
 ```
 
 ### Low Priority
@@ -63,11 +62,7 @@ keluar dari loop kode
 - [ ] Integrasi gui
 - [ ] Menambah fungsi main untuk menggabungkan pemanggilan fungsi
 - [ ] Membaca / menscan input keyboard tanpa enter, preliminary menggunakan module curses
+- [ ] Menyederhanakan kode
+- [ ] Menjadikan fungsi pergerakan dll jadi satu tanpa mengulangi penulisan
+- [ ] Cari fungsi dari kode yang tidak yakin
 - [ ] ...
-- [ ] ...
-
-#### Progress to do
-
-1. Menyederhanakan kode
-2. Menjadikan fungsi pergerakan dll jadi satu tanpa mengulangi penulisan
-3. Cari fungsi dari kode yang tidak yakin
