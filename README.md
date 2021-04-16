@@ -28,6 +28,14 @@ cd simulasi/
 roslaunch drone_application lab_sim_drone.launch
 ```
 
+```
+Penjelasan
+lab_sim_drone.launch = World laboratorium
+real_drone.launch = Untuk koneksi ke drone fisik
+real_tum.launch = Untuk koneksi ke drone fisik dan GUI Tum
+sim_drone.launch = World default / empty world
+```
+
 - Jalankan kode di terminal
 
 ```bash
