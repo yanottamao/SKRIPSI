@@ -25,7 +25,7 @@ cd simulasi/
 ```
 
 ```bash
-roslaunch drone_application lab_sim_drone.launch
+roslaunch drone_application nama_kode.launch
 ```
 
 ```
