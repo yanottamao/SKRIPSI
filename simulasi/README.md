@@ -1,9 +1,11 @@
-Struktur folder simulasi
+# Struktur folder simulasi
 
-cameraconfig = berisi konfigurasi / kalibrasi kamera ardrone untuk slam
+## Deskripsi
 
-drone_application = folder untuk menjalankan simulasi atau menghubungkan ke drone fisik
+1. cameraconfig = berisi konfigurasi / kalibrasi kamera ardrone untuk slam
 
-konfigurasi = file konfigurasi rviz
+2. drone_application = folder untuk menjalankan simulasi atau menghubungkan ke drone fisik
 
-world = world laboratorium untuk simulasi
+3. konfigurasi = file konfigurasi rviz
+
+4. world = world laboratorium untuk simulasi
